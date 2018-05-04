@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bit Bay</title>
+    <!-- bootstrap css link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!-- Font awesome css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Our style sheet link -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- jquery link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Moment.js Link -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <!-- bootstrap.js link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <!-- Firebase link -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+    <!-- Our Javascript Link -->
+    <script src="assets/javascript/app.js"></script>
+    <!--Fontawesome-->
+  <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script> -->
+    <!--Google font-->
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/robotech-gp" type="text/css" />
+    <!--Bitcoin Widget-->
+    <script>
+        (function(b,i,t,C,O,I,N) {
+            window.addEventListener('load',function() {
+            if(b.getElementById(C))return;
+            I=b.createElement(i),N=b.getElementsByTagName(i)[0];
+            I.src=t;I.id=C;N.parentNode.insertBefore(I, N);
+            },false)
+        })(document,'script','https://widgets.bitcoin.com/widget.js','btcwdgt');
+    </script>
+</head>
+
+<body>
+      <!-- Navbar start -->
+  <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <a class="navbar-brand" href="#"><img class="logo" src="assets/images/bitcoin2.png" alt="BitBay Logo">BitBay&reg;</a>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <span class="navbar-text">
+        </span>
+      </div>
+  </nav>
+      <!-- Navbar end -->
+      <!-- jumbotron -->
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <div class="row">
+        <h1 class="display-3">Welcome to BitBay</h1>
+        <p class="lead">BitBay provides eBay shopping search results with the price converted to Bitcoin. To use BitBay, type your desired item into the search field.</p>
+        <section id="searchbar-section">
+          <div class= "input-group col-sml-3">
+            <input class="form-control rounded-0 py-2" type="search" placeholder="search" id="user-input">
+              <span class="input-group-btn">
+                <button class="btn btn-outline-secondary" type="button" id="search-button">
+                    <i class="fa fa-search"></i>
+                </button>
+              </span>
+          </div>
+        </section>
+      <div id="storeBTC"></div>
+    </div>
+  </div>
+  </div>
+      <!-- end jumbotron -->
+    
+      <!-- Search results container -->
+  <div class="container" id="results-container">
+    <div id="result-1">
+        
+    </div>
+    <div id="result-2">
+        
+    </div>
+    <div id="result-3">
+        
+    </div>
+  </div>
+      <!-- end search results container -->
+
+  <div class="container">
+    <div class="row charts">
+      <div class="col">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active item1">
+        <canvas id="mainChart"></canvas>
+    </div>
+    <div class="carousel-item item2">
+        <canvas id="lineChart"></canvas>
+    </div>
+    <div class="carousel-item item3">
+        <canvas id="barChart"></canvas>
+    </div>
+    <div class="carousel-item item4">
+        <canvas id="bubbleChart"></canvas>
+    </div>
+    </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+      </div>
+    </div>
+  </div>
+      <!-- end container -->
+      <!-- Begin widgets section -->
+  <div class="container" id="widget-container">
+      <div id="news-widget">
+        <div class="btcwdgt-news" bw-entries="5" bw-theme="dark"></div>
+      </div>
+      <div id="forum-widget">
+        <div class="btcwdgt-forum" bw-entries="5" bw-theme="dark"></div>
+      </div>
+  </div>
+      <!-- End widgets section -->
+  <div id="footer">
+    <div class="container">
+      <p class="footer-block"><span><a target="_blank" href="https://github.com/Bit-Bay-Group/BitBay"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a></span> Created By: Cynthia London, Pete Garcia, Mark Alaniz, &amp; Will Blake 2017 &copy;</p>
+    </div>
+  </div>
+
+</body>
+
+</html>

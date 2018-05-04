@@ -1,0 +1,138 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  margin-bottom: 100px;
+  width: 100%;
+  height: 100%;
+  background-color: #042E2C;
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1, startColorstr=#042E2C, endColorstr=#041E1F);
+  background-image: -moz-linear-gradient(left, #042E2C 0%, #041E1F 100%, #032723 0%, #036D6D 8%, #69CDC8 67%);
+  background-image: linear-gradient(left, #042E2C 0%, #041E1F 100%, #032723 0%, #036D6D 8%, #69CDC8 67%);
+  background-image: -webkit-linear-gradient(left, #042E2C 0%, #041E1F 100%, #032723 0%, #036D6D 8%, #69CDC8 67%);
+  background-image: -o-linear-gradient(left, #042E2C 0%, #041E1F 100%, #032723 0%, #036D6D 8%, #69CDC8 67%);
+  background-image: -ms-linear-gradient(left, #042E2C 0%, #041E1F 100%, #032723 0%, #036D6D 8%, #69CDC8 67%);
+  background-image: -webkit-gradient(linear, left bottom, right bottom, color-stop(0%, #042E2C), color-stop(100%, #041E1F), color-stop(0%, #032723), color-stop(8%, #036D6D), color-stop(67%, #69CDC8));
+}
+
+a {
+  color: white;
+}
+
+.input-group {
+  padding-top: 10px;
+}
+
+.carousel {
+    /* border-radius: 55px 55px 55px 55px; */
+  overflow: hidden;
+}
+
+.carousel .carousel-inner img {
+  width: 100%;
+  height: 20em;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.title {
+  text-align: center;
+  font-family: 'ROBOTECHGPRegular';
+  font-weight: bold;
+  font-style: normal;
+  font-size: 110px;
+}
+
+/* UI work */
+.navbar-Text {
+  float: right;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.charts {
+  margin-bottom: 30px;
+}
+
+#results-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
+}
+
+#result-1 {
+  background-color: black;
+  color: gold;
+  padding: 10px;
+  opacity: 0.5;
+  width: 33%;
+  min-width: 200px;
+  min-height: 200px;
+  word-wrap: break-word;
+}
+
+#result-2 {
+  background-color: black;
+  color: gold;
+  padding: 10px;
+  opacity: 0.5;
+  width: 33%;
+  min-width: 200px;
+  min-height: 200px;
+  word-wrap: break-word;
+}
+
+#result-3 {
+  background-color: black;
+  color: gold;
+  padding: 10px;
+  opacity: 0.5;
+  width: 33%;
+  min-width: 200px;
+  min-height: 200px;
+  word-wrap: break-word;
+}
+
+#widget-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#news-widget {
+  width: 50%;
+  min-width: 200px;
+}
+
+#forum-widget {
+  width: 50%;
+  min-width: 200px;
+}
+
+#footer {
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+  height: 80px;
+  background-color: black;
+}
+
+.footer-block {
+  text-align: center;
+  margin: 20px 0;
+  color: white;
+}
+
+.fa-github {
+  color: white;
+}
