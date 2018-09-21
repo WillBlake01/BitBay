@@ -29,15 +29,15 @@ function jsonpcallback(data) {
         $("#result-3").append("<a target='_blank' href=" + urlThree + ">Click Here for Listing</a>");
         $("#result-3").append("<p>" + "Price in USD: $" + priceThree + "</p>");
 
-  //Bitcoin conversions
-  // I had to store the bitcoin number in a hidden html element to beat the scope issues
-  // the convertedPrice variable retrieves it and it can be used in this function
-  // the math to convert USD to bitcoin is just: price_in_USD / covertPrice
-  var convertPrice = $("#storeBTC").html();
-  $("#result-1").append("<p>" + parseFloat(priceOne / convertPrice).toFixed(8) + " BTC</p>");
-  $("#result-2").append("<p>" + parseFloat(priceTwo / convertPrice).toFixed(8) + " BTC</p>");
-  $("#result-3").append("<p>" + parseFloat(priceThree / convertPrice).toFixed(8) + " BTC</p>")
-      }
+//Bitcoin conversions
+// I had to store the bitcoin number in a hidden html element to beat the scope issues
+// the convertedPrice variable retrieves it and it can be used in this function
+// the math to convert USD to bitcoin is just: price_in_USD / covertPrice
+var convertPrice = $("#storeBTC").html();
+$("#result-1").append("<p>" + parseFloat(priceOne / convertPrice).toFixed(8) + " BTC</p>");
+$("#result-2").append("<p>" + parseFloat(priceTwo / convertPrice).toFixed(8) + " BTC</p>");
+$("#result-3").append("<p>" + parseFloat(priceThree / convertPrice).toFixed(8) + " BTC</p>")
+    }
 
 //--------------------------------------End eBay API JSON callback-----------------------
 
@@ -47,23 +47,23 @@ $(document).ready(function() {
     $("#result-2").hide();
     $("#result-3").hide();
 
-  //---------------------------------------Blockchain API GET request-------------
+//---------------------------------------Blockchain API GET request-------------
     // Chain all ajax request inside of $.when()
     // Manipulate all responses inside of .then(function(){});
     //API URL links
-  var myKey = "0c450e4c-8ea7-4c5e-976d-879cc34f087c";
-  var bitQueryURL = 'https://api.blockchain.info/stats?cors=true&key=' + myKey;
-  var priceGraphURL = 'https://api.blockchain.info/charts/market-price?timespan=30days&format=json&cors=true&key=' + myKey;
-  var hashURL = 'https://api.blockchain.info/pools?timespan=10days&cors=true&key=' + myKey;
-  var transactionURL = 'https://api.blockchain.info/charts/n-transactions?timespan=30days&cors=true&key=' + myKey;
-  var outputURL = 'https://api.blockchain.info/charts/output-volume?timespan=30days&cors=true&key=' + myKey;
+var myKey = "0c450e4c-8ea7-4c5e-976d-879cc34f087c";
+var bitQueryURL = 'https://api.blockchain.info/stats?cors=true&key=' + myKey;
+var priceGraphURL = 'https://api.blockchain.info/charts/market-price?timespan=30days&format=json&cors=true&key=' + myKey;
+var hashURL = 'https://api.blockchain.info/pools?timespan=10days&cors=true&key=' + myKey;
+var transactionURL = 'https://api.blockchain.info/charts/n-transactions?timespan=30days&cors=true&key=' + myKey;
+var outputURL = 'https://api.blockchain.info/charts/output-volume?timespan=30days&cors=true&key=' + myKey;
     //API output variables
     var gStats;
     var priceGraph;
     var hashPool;
     var transactionCount;
     var outputValue;
-  var convertBTC;
+var convertBTC;
 
     $.when(
         //General Stats
@@ -108,21 +108,21 @@ $(document).ready(function() {
         var dateRange = [];
         var convert;
         for (var i = 0; i < transactionCount.values.length; i++) {
-      convert = moment.unix(transactionCount.values[i].x).format("MMM Do");
-            dateRange.push(convert);
-        }
-    //Following functions organize the values from our APIs into an array for ease of access.
-    var marketValue30Day = [];
-    for (var i = 0; i < priceGraph.values.length; i++) {
-      marketValue30Day.push(priceGraph.values[i].y);
+    convert = moment.unix(transactionCount.values[i].x).format("MMM Do");
+        dateRange.push(convert);
     }
-    var transactionValue30Day = [];
-    for (var i = 0; i < transactionCount.values.length; i++) {
-      transactionValue30Day.push(transactionCount.values[i].y);
-    }
-    var outputValue30Day = [];
-    for (var i = 0; i < outputValue.values.length; i++) {
-      outputValue30Day.push(outputValue.values[i].y);
+//Following functions organize the values from our APIs into an array for ease of access.
+var marketValue30Day = [];
+for (var i = 0; i < priceGraph.values.length; i++) {
+    marketValue30Day.push(priceGraph.values[i].y);
+}
+var transactionValue30Day = [];
+for (var i = 0; i < transactionCount.values.length; i++) {
+    transactionValue30Day.push(transactionCount.values[i].y);
+}
+var outputValue30Day = [];
+for (var i = 0; i < outputValue.values.length; i++) {
+    outputValue30Day.push(outputValue.values[i].y);
     }
     var hashPoolNameList = Object.keys(hashPool);
     var hashPoolValueList = Object.values(hashPool);
@@ -140,7 +140,7 @@ $(document).ready(function() {
             Chart.defaults.global.animation.duration = 2000;
             Chart.defaults.global.animation.easing = 'easeInOutQuart';
             Chart.defaults.global.title.fontSize = 30;
-      Chart.defaults.global.defaultFontColor = '#ffffff';
+    Chart.defaults.global.defaultFontColor = '#ffffff';
             // Global plugin for text inside of dought chart
             // copied from chartjs github issues https://github.com/chartjs/Chart.js/issues/78
             Chart.pluginService.register({
@@ -214,34 +214,34 @@ $(document).ready(function() {
                     datasets: [{
             data: [10],
                         backgroundColor: [
-              'rgba(255, 153, 0, 1)'
-                        ],
-                        borderColor: [
-              'rgba(250, 200, 37, 1)'
-                        ],
-            borderWidth: 2
-                    }]
-                },
-                options: {
-                    cutoutPercentage: 80,
-                    responsive: true,
-                    maintainAspectRatio: true,
-          tooltips: {
-            enabled: false
-          },
-                    elements: {
-                        center: {
-              text: "1 BTC = " + gStats.market_price_usd + " USD"
-                        }
-                        }
+            'rgba(255, 153, 0, 1)'
+                    ],
+                    borderColor: [
+            'rgba(250, 200, 37, 1)'
+                    ],
+        borderWidth: 2
+                }]
+            },
+            options: {
+                cutoutPercentage: 80,
+                responsive: true,
+                maintainAspectRatio: true,
+        tooltips: {
+        enabled: false
+        },
+                elements: {
+                    center: {
+            text: "1 BTC = " + gStats.market_price_usd + " USD"
                     }
-            });
-            // Line chart displaying BTC market data.
-            var chart1 = $('#lineChart');
-            var lineChart = new Chart(chart1, {
-                type: 'line',
-                data: {
-          labels: dateRange,
+                    }
+                }
+        });
+        // Line chart displaying BTC market data.
+        var chart1 = $('#lineChart');
+        var lineChart = new Chart(chart1, {
+            type: 'line',
+            data: {
+        labels: dateRange,
                     datasets: [{
             backgroundColor: 'rgba(255, 153, 0, 1)',
             borderColor: 'rgba(250, 200, 37, 1)',
@@ -264,88 +264,88 @@ $(document).ready(function() {
                                 display: true,
                                 labelString: 'USD',
                     },
-              gridLines: {
-                display: false,
-                color: '#ffffff'
-              }
-            }],
-            xAxes: [{
-              gridLines: {
-                display: false,
-                color: '#ffffff'
-              }
-            }]
-          }
+            gridLines: {
+            display: false,
+            color: '#ffffff'
+            }
+        }],
+        xAxes: [{
+            gridLines: {
+            display: false,
+            color: '#ffffff'
+            }
+        }]
         }
-            });
-            // Chart displaying different hashpools and hashrate.
-            var chart2 = $('#barChart');
-            var bar = new Chart(chart2, {
-        type: 'horizontalBar',
-                data: {
-          labels: hashPoolNameList,
-                    datasets: [{
-            borderWidth: 2,
-            backgroundColor: 'rgba(255, 153, 0, 1)',
-            borderColor: 'rgba(250, 200, 37, 1)',
-            data: hashPoolValueList,
-                    }, ]
+    }
+        });
+        // Chart displaying different hashpools and hashrate.
+        var chart2 = $('#barChart');
+        var bar = new Chart(chart2, {
+    type: 'horizontalBar',
+            data: {
+        labels: hashPoolNameList,
+                datasets: [{
+        borderWidth: 2,
+        backgroundColor: 'rgba(255, 153, 0, 1)',
+        borderColor: 'rgba(250, 200, 37, 1)',
+        data: hashPoolValueList,
+                }, ]
+            },
+            options: {
+        legend: {
+        display: false
+        },
+                responsive: true,
+                maintainAspectRatio: true,
+                title: {
+                    display: true,
+                    text: "Hash Rates of Popular Mining Pools (Higher is better)"
                 },
-                options: {
-          legend: {
-            display: false
-          },
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    title: {
-                        display: true,
-                        text: "Hash Rates of Popular Mining Pools (Higher is better)"
-                    },
-                    scales: {
-                      yAxes: [{
-                        scaleLabel: {
-                display: false,
-                labelString: 'Popular Pool'
-              },
-              gridLines: {
-                display: false,
-                color: '#ffffff'
-                        }
-            }],
-            xAxes: [{
-              scaleLabel: {
-                display: true,
-                labelString: 'Gigahash/sec'
-              },
-              gridLines: {
-                display: false,
-                color: '#ffffff'
-              }
-                      }]
+                scales: {
+                    yAxes: [{
+                    scaleLabel: {
+            display: false,
+            labelString: 'Popular Pool'
+            },
+            gridLines: {
+            display: false,
+            color: '#ffffff'
+                    }
+        }],
+        xAxes: [{
+            scaleLabel: {
+            display: true,
+            labelString: 'Gigahash/sec'
+            },
+            gridLines: {
+            display: false,
+            color: '#ffffff'
+            }
+                    }]
                     }
                 }
             });
 
             //Bubble showing transactions per day with bubble size relative to transaction size
-      var scaledR = outputValue30Day.map(function(x) {
-        return x/100000;
-      });
-      var xArray = dateRange;
-      var yArray = transactionValue30Day;
-      var rArray = scaledR;
-      var bubbleData = [];
-      xArray.forEach(function(e,i) {
-        bubbleData.push({
-          x: parseFloat(e),
-          y: parseFloat(yArray[i]),
-          r: parseFloat(rArray[i])
-        });
-      });
-            var chart3 = $("#bubbleChart");
-            var bubbleChar = new Chart(chart3, {
-                type: 'bubble',
-                data: {
-          labels: dateRange,
+    var scaledR = outputValue30Day.map(function(x) {
+    return x/100000;
+    });
+    var xArray = dateRange;
+    var yArray = transactionValue30Day;
+    var rArray = scaledR;
+    var bubbleData = [];
+    xArray.forEach(function(e,i) {
+    bubbleData.push({
+        x: parseFloat(e),
+        y: parseFloat(yArray[i]),
+        r: parseFloat(rArray[i])
+    });
+    });
+        var chart3 = $("#bubbleChart");
+        var bubbleChar = new Chart(chart3, {
+            type: 'bubble',
+            data: {
+        labels: dateRange,
                     datasets: [{
             borderWidth: 2,
             label: "Relative Transaction Size (1/100,000 BTC)",
@@ -366,19 +366,19 @@ $(document).ready(function() {
                             scaleLabel: {
                                 display: true,
                                 labelString: '# of Transactions per Day'
-              },
-              gridLines: {
-                display: false,
-                color: '#ffffff'
-                            }
-            }],
-            xAxes: [{
-              type: 'category',
-              labels: dateRange,
-              gridLines: {
-                display: false,
-                color: '#ffffff'
-              }
+            },
+            gridLines: {
+            display: false,
+            color: '#ffffff'
+                        }
+        }],
+        xAxes: [{
+            type: 'category',
+            labels: dateRange,
+            gridLines: {
+            display: false,
+            color: '#ffffff'
+            }
                         }]
                     }
                 }
@@ -398,41 +398,41 @@ $(document).ready(function() {
         }
         $('#carouselExampleControls').on('slid.bs.carousel', function() {
 
-      generateChart();
+    generateChart();
     });
     convertBTC = gStats.market_price_usd;
     $("#storeBTC").prepend(convertBTC).hide();
     }); // end of $.when().then() function
-  //----------------------End Blockchain API GET request----------------------
+//----------------------End Blockchain API GET request----------------------
 
-  //----------------------Begin eBay API GET request on click function------
+//----------------------Begin eBay API GET request on click function------
 	$("#search-button").on("click", function() {
 
-      var queryKeyword = $("#user-input").val().trim();
+    var queryKeyword = $("#user-input").val().trim();
 
-      var queryURL = "http://open.api.ebay.com/shopping?" +
-        "callname=FindItems&" + 
-        "appid=GordonBl-BitBay-PRD-85d7504c4-e49e3c45&" + 
-        "version=1015&" + 
-        "siteid=0&" + 
-        "QueryKeywords=" + 
-        queryKeyword + 
-        "&ItemSort=BestMatch&" + 
-        "responseencoding=JSON&" + 
+    var queryURL = "http://open.api.ebay.com/shopping?/" +
+        "callname=FindItems&" +
+        "appid=GordonBl-BitBay-PRD-85d7504c4-e49e3c45&" +
+        "version=1015&" +
+        "siteid=0&" +
+        "QueryKeywords=" +
+        queryKeyword +
+        "&ItemSort=BestMatch&" +
+        "responseencoding=JSON&" +
         "MaxEntries=3&" +
         "callbackname=jsonpcallback";
 
         // Clear input on click event
         $("#user-input").val("");
 
-      $.ajax({
-          url: queryURL,
-          method: "GET",
-          dataType: "jsonp"
-      });
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+        dataType: "jsonp"
+    });
 
-  });
-  //--------------------End eBay API GET request on click function--------------
+});
+//--------------------End eBay API GET request on click function--------------
 
 });
 // end doc ready function
